@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 // import sharp from 'sharp';
-// import {Buffer} from "buffer";
+import {Buffer} from "buffer";
 import axios from 'axios';
 import {appConfig} from "../../config";
 
@@ -26,7 +26,7 @@ export default async function handler(
 
     try {
         const content = req.body;
-        // const imageBuffer = Buffer.from(content.buffer, 'base64');
+        const imageBuffer = Buffer.from(content.buffer, 'base64');
 
         // Fetch frozen asset from 'public' folder (Note relative path doesn't work)
         const frozenBufferResponse = await axios({
