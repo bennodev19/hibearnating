@@ -30,7 +30,7 @@ export async function onDrop(acceptedFiles: File[]) {
 
     try {
         // Edit provided image in backend
-        const response = await axios.post('/api/hibearnate', {buffer: fileBuffer.toString('base64')});
+        const response = await axios.post('/api', {buffer: fileBuffer.toString('base64')});
         const data = response.data;
         const imageBuffer = Buffer.from(data.buffer, 'base64')
 
