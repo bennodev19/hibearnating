@@ -1,4 +1,4 @@
 export default {
     imageBaseUrl: process.env.IMAGE_BASE_URL,
-    maxImageSize: 5 // mb
+    maxImageSize: 8 // mb
 };

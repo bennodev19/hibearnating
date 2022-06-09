@@ -8,6 +8,7 @@ export async function onDrop(acceptedFiles: File[]) {
 
     if (acceptedFiles.length <= 0) {
         errorToast("You need to provide at least on file!");
+        IS_LOADING.set(false);
         return;
     }
 
@@ -15,6 +16,7 @@ export async function onDrop(acceptedFiles: File[]) {
     const fileBuffer = await parseFile(acceptedFiles[0]);
     if (fileBuffer == null) {
         errorToast("Failed to parse file!");
+        IS_LOADING.set(false);
         return;
     }
 
@@ -22,6 +24,7 @@ export async function onDrop(acceptedFiles: File[]) {
     console.log("File Size", fileSizeInMb)
     if(fileSizeInMb > appConfig.maxImageSize){
         errorToast(`File with ${fileSizeInMb.toFixed(2)}mb exceeded the max file size of ${appConfig.maxImageSize}mb!`);
+        IS_LOADING.set(false);
         return;
     }
 
