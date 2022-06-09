@@ -4,20 +4,26 @@ import styled from "styled-components";
 import {onDownload, onDrop} from '../controller';
 import {IS_LOADING, IMAGE_URL} from "../core";
 import {useAgile} from "@agile-ts/react";
+import Head from 'next/head';
 
 const Home: NextPage = () => {
     const [isLoading, image] = useAgile([IS_LOADING, IMAGE_URL]);
 
     return (
-        <Container>
-            <DropZone onDrop={onDrop} isLoading={isLoading}/>
-            {image != null &&
-                <ImageContainer onClick={() => onDownload(image)
-                }>
-                    <img src={image} width={256} height={256}/>
-                </ImageContainer>}
-        </Container>
-    )
+        <>
+            <Head>
+                <title>HiBEARnating 🥶</title>
+            </Head>
+            <Container>
+                <DropZone onDrop={onDrop} isLoading={isLoading}/>
+                {image != null &&
+                    <ImageContainer onClick={() => onDownload(image)
+                    }>
+                        <img src={image} width={256} height={256}/>
+                    </ImageContainer>}
+            </Container>
+        </>
+    );
 }
 
 export default Home;
