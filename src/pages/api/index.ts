@@ -1,7 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 // import sharp from 'sharp';
 import {Buffer} from "buffer";
-import axios from 'axios';
+// import axios from 'axios';
 import {appConfig} from "../../config";
 
 type RequestData = {
@@ -29,11 +29,11 @@ export default async function handler(
         const imageBuffer = Buffer.from(content.buffer, 'base64');
 
         // Fetch frozen asset from 'public' folder (Note relative path doesn't work)
-        const frozenBufferResponse = await axios({
-            url: `${appConfig.imageBaseUrl}/frozen.png`,
-            responseType: 'arraybuffer'
-        });
-        const frozenBuffer = frozenBufferResponse.data as Buffer;
+        // const frozenBufferResponse = await axios({
+        //     url: `${appConfig.imageBaseUrl}/frozen.png`,
+        //     responseType: 'arraybuffer'
+        // });
+        // const frozenBuffer = frozenBufferResponse.data as Buffer;
 
         // Blend frozen image with provided image
         // const output = await sharp(imageBuffer)
