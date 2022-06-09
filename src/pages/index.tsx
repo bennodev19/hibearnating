@@ -13,8 +13,35 @@ const Home: NextPage = () => {
         <>
             <Head>
                 <title>HiBEARnating 🥶</title>
+                <meta property="og:title" content={"HiBEARnating 🥶"}/>
+                <meta name="twitter:title" content={"HiBEARnating 🥶"}/>
+                <meta name="theme-color" content={"#19AB6D"}/>
+                <link rel="shortcut icon" href={'/favicon.ico'}/>
+
+                {/* Description */}
+                <meta name="description" content={'Just HiBEARnating 🐻. Created by @bennodev19'}/>
+                <meta name="og:description" content={'Just HiBEARnating 🐻. Created by @bennodev19'}/>
+                <meta name="twitter:description" content={'Just HiBEARnating 🐻. Created by @bennodev19'}/>
+
+                {/* Image */}
+                <meta property="image" content={'/background_frozen'}/>
+                <meta property="og:image" content={'/background_frozen'}/>
+                <meta name="twitter:image" content={'/background_frozen'}/>
+                <meta name="twitter:image:src" content={'/background_frozen'}/>
+
+                <meta
+                    name="twitter:image:alt"
+                    content={`Image for "HiBEARnating"`}
+                />
+
+                {/* Makes Image Large */}
+                <meta name="twitter:card" content="summary_large_image"/>
+
+                {/* Creator */}
+                <meta name="twitter:creator" content={'https://twitter.com/DevBenno'}/>
             </Head>
-            <Container>
+            
+            <Container hasHibearnated={image != null}>
                 <DropZone onDrop={onDrop} isLoading={isLoading}/>
                 {image != null &&
                     <ImageContainer onClick={() => onDownload(image)
@@ -28,7 +55,7 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const Container = styled.div`
+const Container = styled.div<{ hasHibearnated: boolean }>`
   display: flex;
   flex: 1;
   width: 100%;
@@ -38,7 +65,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  background-image: url('/background.jpg');
+  background-image: url(${({hasHibearnated}) => `/${hasHibearnated ? 'background_frozen' : 'background'}.jpg`});
   background-size: cover;
   background-repeat: no-repeat;
 `;
