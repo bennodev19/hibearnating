@@ -57,10 +57,10 @@ export default async function handler(
 }
 
 // https://stackoverflow.com/questions/53550932/dotenv-values-not-loaded-in-nextjs
-export const config = {
-    api: {
-        bodyParser: {
-            sizeLimit: `${appConfig.maxImageSize}mb`
-        }
-    }
-}
+// export const config = {
+//     api: {
+//         bodyParser: {
+//             sizeLimit: `${appConfig.maxImageSize}mb`
+//         }
+//     }
+// }
