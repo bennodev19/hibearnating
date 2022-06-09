@@ -1,6 +1,7 @@
 import {errorToast, IMAGE_URL, IS_LOADING, parseFile} from "./core";
 import {Buffer} from "buffer";
 import axios from "axios";
+import {appConfig} from "./config";
 
 export async function onDrop(acceptedFiles: File[]) {
     IS_LOADING.set(true);
@@ -14,6 +15,13 @@ export async function onDrop(acceptedFiles: File[]) {
     const fileBuffer = await parseFile(acceptedFiles[0]);
     if (fileBuffer == null) {
         errorToast("Failed to parse file!");
+        return;
+    }
+
+    const fileSizeInMb = fileBuffer.byteLength / 1024 / 1024;
+    console.log("File Size", fileSizeInMb)
+    if(fileSizeInMb > appConfig.maxImageSize){
+        errorToast(`File with ${fileSizeInMb.toFixed(2)}mb exceeded the max file size of ${appConfig.maxImageSize}mb!`);
         return;
     }
 

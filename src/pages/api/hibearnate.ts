@@ -38,6 +38,7 @@ export default async function handler(
         // Blend frozen image with provided image
         const output = await sharp(imageBuffer)
             .png()
+            .resize(2048, 2048) // needs to be the exact size of the 'frozen.png'
             .composite([
                 {
                     input: frozenBuffer,
@@ -52,5 +53,14 @@ export default async function handler(
     } catch (e) {
         console.log("Error", e)
         res.status(400).json({message: 'Something went wrong', e});
+    }
+}
+
+// https://stackoverflow.com/questions/53550932/dotenv-values-not-loaded-in-nextjs
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: `${appConfig.maxImageSize}mb`
+        }
     }
 }
