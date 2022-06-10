@@ -6,7 +6,7 @@ export default {
     title: 'Time to #hiBEARnate 🥶',
     description: `Is you Okay Bear ready for #hibearnation?`,
     color: '#19AB6D',
-    bannerUrl: 'https://hibearnation.vercel.app/background_frozen.jpg',
+    bannerUrl: 'https://hibearnating.vercel.app//background_frozen.jpg',
     creator: 'https://twitter.com/DevBenno',
   },
 };
