@@ -1,7 +1,7 @@
-import { errorToast, IMAGE_URL, IS_LOADING, parseFile } from './core';
+import { errorToast, IMAGE_URL, IS_LOADING, parseFile } from '../core';
 import { Buffer } from 'buffer';
 import axios from 'axios';
-import { appConfig } from './config';
+import { appConfig } from '../config';
 
 export async function onDrop(acceptedFiles: File[]) {
   IS_LOADING.set(true);
@@ -34,7 +34,7 @@ export async function onDrop(acceptedFiles: File[]) {
 
   try {
     // Edit provided image in backend
-    const response = await axios.post('/api', {
+    const response = await axios.post('/api/hibearnate', {
       buffer: fileBuffer.toString('base64'),
     });
     const data = response.data;

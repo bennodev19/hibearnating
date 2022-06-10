@@ -1,10 +1,11 @@
 import type { NextPage } from 'next';
-import DropZone from '../ui/components/DropZone';
+import DropZone from '../ui/components/input/DropZone';
 import styled from 'styled-components';
-import { onDownload, onDrop } from '../controller';
+import { onDownload, onDrop } from './index.controller';
 import { IS_LOADING, IMAGE_URL } from '../core';
 import { useAgile } from '@agile-ts/react';
 import Head from 'next/head';
+import { appConfig } from '../config';
 
 const Home: NextPage = () => {
   const [isLoading, image] = useAgile([IS_LOADING, IMAGE_URL]);
@@ -13,30 +14,24 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>HiBEARnating 🥶</title>
-        <meta property="og:title" content={'HiBEARnating 🥶'} />
-        <meta name="twitter:title" content={'HiBEARnating 🥶'} />
-        <meta name="theme-color" content={'#19AB6D'} />
+
+        {/* Title */}
+        <meta property="og:title" content={appConfig.meta.title} />
+        <meta name="twitter:title" content={appConfig.meta.title} />
+
+        <meta name="theme-color" content={appConfig.meta.color} />
         <link rel="shortcut icon" href={'/favicon.ico'} />
 
         {/* Description */}
-        <meta
-          name="description"
-          content={'Just HiBEARnating 🐻. Created by @bennodev19'}
-        />
-        <meta
-          name="og:description"
-          content={'Just HiBEARnating 🐻. Created by @bennodev19'}
-        />
-        <meta
-          name="twitter:description"
-          content={'Just HiBEARnating 🐻. Created by @bennodev19'}
-        />
+        <meta name="description" content={appConfig.meta.description} />
+        <meta name="og:description" content={appConfig.meta.description} />
+        <meta name="twitter:description" content={appConfig.meta.description} />
 
         {/* Image */}
-        <meta property="image" content={'/background_frozen.jpg'} />
-        <meta property="og:image" content={'/background_frozen.jpg'} />
-        <meta name="twitter:image" content={'/background_frozen.jpg'} />
-        <meta name="twitter:image:src" content={'/background_frozen.jpg'} />
+        <meta property="image" content={appConfig.meta.bannerUrl} />
+        <meta property="og:image" content={appConfig.meta.bannerUrl} />
+        <meta name="twitter:image" content={appConfig.meta.bannerUrl} />
+        <meta name="twitter:image:src" content={appConfig.meta.bannerUrl} />
 
         <meta name="twitter:image:alt" content={`Image for "HiBEARnating"`} />
 
@@ -44,7 +39,7 @@ const Home: NextPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
 
         {/* Creator */}
-        <meta name="twitter:creator" content={'https://twitter.com/DevBenno'} />
+        <meta name="twitter:creator" content={appConfig.meta.creator} />
       </Head>
 
       <Container hasHibearnated={image != null}>
