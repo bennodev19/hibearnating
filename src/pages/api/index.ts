@@ -40,7 +40,7 @@ export default async function handler(
         // Blend frozen image with provided image
         const output = await sharp(imageBuffer)
             .png()
-            .resize(2048, 2048) // needs to be the exact size of the 'frozen.png'
+            .resize(appConfig.imageDims, appConfig.imageDims)
             .composite([
                 {
                     input: frozenBuffer,
