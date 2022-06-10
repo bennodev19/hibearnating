@@ -1,6 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import sharp from 'sharp';
-// import {Buffer} from "buffer";
 import axios from 'axios';
 import {appConfig} from "../../config";
 
@@ -23,6 +22,9 @@ export default async function handler(
     if (req.method !== 'POST') {
         res.status(405).json({message: "Only POST requests allowed!"});
     }
+
+    // TODO Make bg transparent!!
+    //  https://stackoverflow.com/questions/11472273/how-to-edit-pixels-and-remove-white-background-in-a-canvas-image-in-html5-and-ja
 
     try {
         const content = req.body;
